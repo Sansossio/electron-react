@@ -1,9 +1,21 @@
 {
-  "name": "cra-electron",
-  "description": "CRA + Electron sitting in a tree",
-  "author": "Kitze",
+  "name": "testing-electron",
   "version": "0.2.7",
   "private": true,
+  "main": "app/electron.js",
+  "homepage": "./",
+  "scripts": {
+    "react-start": "react-scripts start",
+    "react-build": "react-scripts build",
+    "react-test": "react-scripts test --env=jsdom",
+    "react-eject": "react-scripts eject",
+    "electron-build": "electron-builder",
+    "release": "yarn react-build && electron-builder --publish=always",
+    "build": "yarn react-build && yarn electron-build",
+    "start": "concurrently \"cross-env BROWSER=none yarn react-start\" \"wait-on http://localhost:3000 && electron .\"",
+    "lint": "standard",
+    "lint:fix": "standard --fix"
+  },
   "dependencies": {
     "cross-env": "6.0.2",
     "electron-is-dev": "1.1.0",
@@ -26,20 +38,6 @@
     "publish": {
       "provider": "github"
     }
-  },
-  "main": "public/electron.js",
-  "homepage": "./",
-  "scripts": {
-    "react-start": "react-scripts start",
-    "react-build": "react-scripts build",
-    "react-test": "react-scripts test --env=jsdom",
-    "react-eject": "react-scripts eject",
-    "electron-build": "electron-builder",
-    "release": "yarn react-build && electron-builder --publish=always",
-    "build": "yarn react-build && yarn electron-build",
-    "start": "concurrently \"cross-env BROWSER=none yarn react-start\" \"wait-on http://localhost:3000 && electron .\"",
-    "lint": "standard",
-    "lint:fix": "standard --fix"
   },
   "browserslist": {
     "production": [
