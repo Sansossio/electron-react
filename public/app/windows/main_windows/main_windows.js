@@ -23,5 +23,7 @@ module.exports = function () {
   )
   mainWindow.setMenu(null)
   mainWindow.webContents.openDevTools()
+  mainWindow.setResizable(false)
+  mainWindow.setMaximizable(false)
   mainWindow.on('closed', () => (mainWindow = null))
 }
