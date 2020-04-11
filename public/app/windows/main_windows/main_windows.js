@@ -1,9 +1,7 @@
-const { BrowserWindow } = require('electron')
+const { app, BrowserWindow } = require('electron')
 const config = require('./main_windows.config.json')
 const isDev = require('electron-is-dev')
 const path = require('path')
-
-let mainWindow
 
 module.exports = function () {
   const productionPath = path.join(
@@ -15,7 +13,7 @@ module.exports = function () {
     'build',
     'index.html'
   )
-  mainWindow = new BrowserWindow(config.window)
+  const mainWindow = new BrowserWindow(config.window)
   mainWindow.loadURL(
     isDev
       ? 'http://localhost:3000'
@@ -25,5 +23,7 @@ module.exports = function () {
   mainWindow.webContents.openDevTools()
   mainWindow.setResizable(false)
   mainWindow.setMaximizable(false)
-  mainWindow.on('closed', () => (mainWindow = null))
+  mainWindow.on('closed', () => {
+    app.exit()
+  })
 }
