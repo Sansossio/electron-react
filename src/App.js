@@ -2,15 +2,13 @@ import React, { Component } from 'react'
 import logo from './logo.svg'
 import './App.css'
 
-const { remote } = window.require('electron')
+const { ipcRenderer } = window.require('electron')
+
+const syncEvents = ipcRenderer.sendSync('GET_EVENTS')
 
 class App extends Component {
-  handlePrint () {
-    console.log(remote.getCurrentWindow())
-  }
-
   render () {
-    this.handlePrint()
+    const version = ipcRenderer.sendSync(syncEvents.GET_VERSION)
     return (
       <div className='App'>
         <div className='App-header'>
@@ -19,7 +17,7 @@ class App extends Component {
         </div>
         <p className='App-intro'>
           <b> Release 0.2.8 </b>
-          Version: {remote.app.getVersion()}
+          Version: {version}
         </p>
       </div>
     )

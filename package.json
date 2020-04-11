@@ -5,13 +5,12 @@
   "main": "app/electron.js",
   "homepage": "./",
   "scripts": {
-    "react-start": "react-scripts start",
-    "react-build": "react-scripts build",
-    "react-test": "react-scripts test --env=jsdom",
-    "react-eject": "react-scripts eject",
+    "start:react": "cross-env BROWSER=none react-scripts start",
+    "build:react": "react-scripts build",
+    "test:react": "react-scripts test --env=jsdom",
     "electron-build": "electron-builder",
-    "release": "npm run react-build && electron-builder --publish=always",
-    "build": "npm run react-build && npm run electron-build",
+    "release": "npm run build:react && electron-builder --publish=always",
+    "build": "npm run build:react && npm run electron-build",
     "start": "concurrently \"cross-env BROWSER=none npm run react-start\" \"wait-on http://localhost:3000 && electron .\"",
     "lint": "standard",
     "lint:fix": "standard --fix"
@@ -19,7 +18,6 @@
   "dependencies": {
     "cross-env": "6.0.2",
     "electron-is-dev": "1.1.0",
-    "electron-reload": "^1.5.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6"
   },
