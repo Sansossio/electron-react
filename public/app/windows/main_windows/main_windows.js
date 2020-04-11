@@ -26,4 +26,5 @@ module.exports = function () {
   mainWindow.on('closed', () => {
     app.exit()
   })
+  return mainWindow
 }
