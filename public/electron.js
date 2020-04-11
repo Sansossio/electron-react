@@ -3,6 +3,7 @@ const isDev = require('electron-is-dev')
 const initWindows = require('./app/windows')
 const initIpc = require('./app/ipc')
 const initEvents = require('./app/events')
+const initSortcuts = require('./app/shortcut')
 
 if (isDev) {
   // Remove eletron security warnings
@@ -13,4 +14,5 @@ app.on('ready', () => {
   initWindows()
   initIpc()
   initEvents()
+  initSortcuts()
 })
