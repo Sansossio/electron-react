@@ -1,8 +1,8 @@
 const { app } = require('electron')
 const isDev = require('electron-is-dev')
-const initWindows = require('./windows')
-const initIpc = require('./ipc')
-const initEvents = require('./events')
+const initWindows = require('./app/windows')
+const initIpc = require('./app/ipc')
+const initEvents = require('./app/events')
 
 if (isDev) {
   // Remove eletron security warnings
