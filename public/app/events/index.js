@@ -1,3 +1,5 @@
+const initEvents = require('./init_events')
+
 module.exports = function () {
-  require('./init_events')
+  initEvents()
 }
