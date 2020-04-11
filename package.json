@@ -16,11 +16,12 @@
     "test:react": "react-scripts test --env=jsdom"
   },
   "dependencies": {
+    "cross-env": "6.0.2",
     "electron": "6.0.11",
     "electron-is-dev": "1.1.0",
-    "cross-env": "6.0.2",
     "react": "^16.8.6",
-    "react-dom": "^16.8.6"
+    "react-dom": "^16.8.6",
+    "react-router-dom": "^5.1.2"
   },
   "devDependencies": {
     "concurrently": "4.1.2",
