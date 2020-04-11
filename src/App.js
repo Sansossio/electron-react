@@ -1,8 +1,8 @@
 import React from 'react'
 import { createBrowserHistory } from 'history'
 import { Switch, Route, Router } from 'react-router-dom'
-import Main from './views/main/main'
-import About from './views/about/about'
+import Main from './views/main/main.view'
+import About from './views/about/about.viw'
 
 const history = createBrowserHistory()
 
