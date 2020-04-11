@@ -1,23 +1,14 @@
 const { app, BrowserWindow } = require('electron')
-const config = require('./main_windows.config.json')
+const config = require('./main.windows.config.json')
 const isDev = require('electron-is-dev')
-const path = require('path')
+const pathConfig = require('../utils/path.windows.utils')
 
 module.exports = function () {
-  const productionPath = path.join(
-    __dirname,
-    '..',
-    '..',
-    '..',
-    '..',
-    'build',
-    'index.html'
-  )
   const mainWindow = new BrowserWindow(config.window)
   mainWindow.loadURL(
     isDev
-      ? 'http://localhost:3000'
-      : `file://${productionPath}`
+      ? pathConfig.url
+      : pathConfig.path
   )
   if (isDev) {
     mainWindow.webContents.openDevTools()

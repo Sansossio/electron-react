@@ -1,6 +1,6 @@
 const { app } = require('electron')
 const isDev = require('electron-is-dev')
-const initWindows = require('./app/windows')
+const windows = require('./app/windows')
 const initIpc = require('./app/ipc')
 const initEvents = require('./app/events')
 const initSortcuts = require('./app/shortcut')
@@ -11,7 +11,7 @@ if (isDev) {
 }
 
 app.on('ready', () => {
-  initWindows()
+  windows.main()
   initIpc()
   initEvents()
   initSortcuts()

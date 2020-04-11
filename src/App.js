@@ -4,9 +4,15 @@ import './App.css'
 
 const { ipcRenderer } = window.require('electron')
 
-const syncEvents = ipcRenderer.sendSync('GET_EVENTS')
+const { syncEvents, asyncEvents } = ipcRenderer.sendSync('GET_EVENTS')
 
 class App extends Component {
+  openAboutWindow (e) {
+    e.preventDefault()
+    const window = 'about'
+    ipcRenderer.send(asyncEvents.OPEN_WINDOW, window)
+  }
+
   render () {
     const version = ipcRenderer.sendSync(syncEvents.GET_VERSION)
     return (
@@ -18,6 +24,9 @@ class App extends Component {
         <p className='App-intro'>
           <b> Release 0.2.8 </b>
           Version: {version}
+        </p>
+        <p>
+          <a onClick={e => this.openAboutWindow(e)} href='about'>Open about</a>
         </p>
       </div>
     )

@@ -1,5 +1,7 @@
-const appEvents = require('./app/app_events')
+const appEvents = require('./app/app.events')
+const windowEvents = require('./window/window.events')
 
 module.exports = function () {
   appEvents()
+  windowEvents()
 }
