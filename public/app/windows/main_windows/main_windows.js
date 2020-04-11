@@ -19,8 +19,10 @@ module.exports = function () {
       ? 'http://localhost:3000'
       : `file://${productionPath}`
   )
+  if (isDev) {
+    mainWindow.webContents.openDevTools()
+  }
   mainWindow.setMenu(null)
-  mainWindow.webContents.openDevTools()
   mainWindow.setResizable(false)
   mainWindow.setMaximizable(false)
   mainWindow.on('closed', () => {
