@@ -1,15 +1,14 @@
 const { app, BrowserWindow } = require('electron')
-const config = require('./main.windows.config.json')
+const config = require('./main.window.config.json')
 const isDev = require('electron-is-dev')
-const pathConfig = require('../utils/path.windows.utils')
+const pathConfig = require('../utils/path.window.utils')
+const urlConfig = require('../utils/url.window.utils')
 
 module.exports = function () {
   const mainWindow = new BrowserWindow(config.window)
-  mainWindow.loadURL(
-    isDev
-      ? pathConfig.url
-      : pathConfig.path
-  )
+  const path = ''
+  const url = isDev ? pathConfig.url : pathConfig.path
+  mainWindow.loadURL(urlConfig(url, path))
   if (isDev) {
     mainWindow.webContents.openDevTools()
   }

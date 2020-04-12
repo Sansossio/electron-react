@@ -1,5 +1,5 @@
-const main = require('./main/main.windows')
-const about = require('./about/about.windows')
+const main = require('./main/main.window')
+const about = require('./about/about.window')
 
 module.exports = {
   main,
