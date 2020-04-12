@@ -2,7 +2,7 @@ import React from 'react'
 import { createBrowserHistory } from 'history'
 import { Switch, Route, HashRouter } from 'react-router-dom'
 import Main from './views/main/main.view'
-import About from './views/about/about.viw'
+import About from './views/about/about.view'
 
 const history = createBrowserHistory()
 

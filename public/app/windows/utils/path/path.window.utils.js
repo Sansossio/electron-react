@@ -5,6 +5,7 @@ const productionPath = path.join(
   '..',
   '..',
   '..',
+  '..',
   'build',
   'index.html'
 )

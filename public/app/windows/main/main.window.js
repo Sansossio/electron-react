@@ -1,8 +1,8 @@
 const { app, BrowserWindow } = require('electron')
 const config = require('./main.window.config.json')
 const isDev = require('electron-is-dev')
-const pathConfig = require('../utils/path.window.utils')
-const urlConfig = require('../utils/url.window.utils')
+const pathConfig = require('../utils/path/path.window.utils')
+const urlConfig = require('../utils/url/url.window.utils')
 
 module.exports = function () {
   const mainWindow = new BrowserWindow(config.window)
