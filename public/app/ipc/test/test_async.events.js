@@ -1,10 +1,12 @@
-const { ipcMain } = require('electron')
+const { ipcMain } = require('electron-better-ipc')
 const asyncEvents = require('../enum/async_events')
 
 module.exports = function () {
-  ipcMain.on(asyncEvents.TEST_ASYNC_EVENT, (event, argument) => {
-    setTimeout(() => {
-      event.reply(asyncEvents.TEST_ASYNC_EVENT, argument)
-    }, 5)
+  ipcMain.answerRenderer(asyncEvents.TEST_ASYNC_EVENT, (argument) => {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        resolve(argument)
+      }, 100)
+    })
   })
 }

@@ -1,4 +1,4 @@
-const { ipcRenderer } = window.require('electron')
+const { ipcRenderer } = window.require('electron-better-ipc')
 
 export class Ipc {
   static getEvents () {
@@ -17,17 +17,11 @@ export class Ipc {
     return ipcRenderer.sendSync(event, argument)
   }
 
-  static sendAsync (event, argument, callback) {
+  static sendAsync (event, argument) {
     ipcRenderer.send(event, argument)
   }
 
-  static sendAndWait (event, argument = '') {
-    return new Promise((resolve) => {
-      Ipc.listen(event, (_, data) => {
-        resolve(data)
-        Ipc.removeAllListener(event)
-      })
-      Ipc.sendAsync(event, argument)
-    })
+  static sendAndWait (event, argument) {
+    return ipcRenderer.callMain(event, argument)
   }
 }
