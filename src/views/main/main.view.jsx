@@ -19,7 +19,7 @@ export default class Main extends Component {
 
   async loadAsyncValue () {
     for (let i = 1; i <= 100; i++) {
-      const asyncValue = await Ipc.sendAsync(asyncEvents.TEST_ASYNC_EVENT, i)
+      const asyncValue = await Ipc.sendAndWait(asyncEvents.TEST_ASYNC_EVENT, i)
       this.setState({ asyncValue })
     }
   }

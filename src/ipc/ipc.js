@@ -17,13 +17,17 @@ export class Ipc {
     return ipcRenderer.sendSync(event, argument)
   }
 
-  static sendAsync (event, argument = '') {
+  static sendAsync (event, argument, callback) {
+    ipcRenderer.send(event, argument)
+  }
+
+  static sendAndWait (event, argument = '') {
     return new Promise((resolve) => {
       Ipc.listen(event, (_, data) => {
         resolve(data)
         Ipc.removeAllListener(event)
       })
-      ipcRenderer.send(event, argument)
+      Ipc.sendAsync(event, argument)
     })
   }
 }
