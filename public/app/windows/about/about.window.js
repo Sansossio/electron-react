@@ -4,13 +4,22 @@ const isDev = require('electron-is-dev')
 const pathConfig = require('../utils/path/path.window.utils')
 const urlConfig = require('../utils/url/url.window.utils')
 
+let window = null
+
 module.exports = function () {
-  const mainWindow = new BrowserWindow(config.window)
+  if (window !== null) {
+    window.show()
+    return
+  }
+  window = new BrowserWindow(config.window)
   const path = 'about'
   const url = isDev ? pathConfig.url : pathConfig.path
-  mainWindow.loadURL(urlConfig(url, path))
-  mainWindow.setMenu(null)
-  mainWindow.setResizable(false)
-  mainWindow.setMaximizable(false)
-  return mainWindow
+  window.loadURL(urlConfig(url, path))
+  window.setMenu(null)
+  window.setResizable(false)
+  window.setMaximizable(false)
+  window.on('close', () => {
+    window = null
+  })
+  return window
 }

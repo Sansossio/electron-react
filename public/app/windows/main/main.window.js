@@ -4,8 +4,10 @@ const isDev = require('electron-is-dev')
 const pathConfig = require('../utils/path/path.window.utils')
 const urlConfig = require('../utils/url/url.window.utils')
 
+let mainWindow
+
 module.exports = function () {
-  const mainWindow = new BrowserWindow(config.window)
+  mainWindow = new BrowserWindow(config.window)
   const path = ''
   const url = isDev ? pathConfig.url : pathConfig.path
   mainWindow.loadURL(urlConfig(url, path))
