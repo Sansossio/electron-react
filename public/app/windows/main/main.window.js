@@ -7,6 +7,9 @@ const urlConfig = require('../utils/url/url.window.utils')
 let mainWindow
 
 module.exports = function () {
+  if (mainWindow) {
+    return mainWindow
+  }
   mainWindow = new BrowserWindow(config.window)
   const path = ''
   const url = isDev ? pathConfig.url : pathConfig.path

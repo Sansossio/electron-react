@@ -9,7 +9,7 @@ let window = null
 module.exports = function () {
   if (window !== null) {
     window.show()
-    return
+    return window
   }
   window = new BrowserWindow(config.window)
   const path = 'about'
