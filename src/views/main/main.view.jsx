@@ -44,7 +44,7 @@ export default class Main extends Component {
   openAboutWindow (e) {
     e.preventDefault()
     const window = 'about'
-    Ipc.asyncEvent(asyncEvents.OPEN_WINDOW, window)
+    Ipc.send(asyncEvents.OPEN_WINDOW, window)
   }
 
   render () {
